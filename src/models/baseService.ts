@@ -1,10 +1,10 @@
-import { ModelType, Typegoose } from 'typegoose';
+import {ModelType, Typegoose} from 'typegoose';
 
 export class BaseService<T extends Typegoose> {
-  // tslint:disable-next-line:variable-name
-  protected _model: ModelType<T>;
+    // tslint:disable-next-line:variable-name
+    protected _model: ModelType<T>;
 
-  async findAll(filter: any = {}) {
-    return this._model.find(filter).exec();
-  }
+    async findAll(filter: any = {}) {
+        return this._model.find(filter).exec();
+    }
 }

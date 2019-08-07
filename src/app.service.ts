@@ -1,11 +1,8 @@
-import { Injectable } from '@nestjs/common';
-import { User } from './user/models/user.model';
-import { InjectModel } from 'nestjs-typegoose';
-import { ModelType } from 'typegoose';
+import {Injectable} from '@nestjs/common';
 
 @Injectable()
-export class AppService {  
-  getHello(): string {
-    return 'Hello World!';
-  }
+export class AppService {
+    getHello(): string {
+        return 'Hello World!';
+    }
 }
