@@ -9,4 +9,10 @@ export class BaseModel<T> extends Typegoose {
 
   @prop()
   updatedAt: Date;
+
+  @prop()
+  updatedBy: string;
+
+  @prop()
+  createdBy: string;
 }

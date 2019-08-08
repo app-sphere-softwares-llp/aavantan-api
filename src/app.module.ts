@@ -4,6 +4,13 @@ import { AppService } from './app.service';
 import { SharedModule } from './shared/shared.module';
 import { UserModule } from './user/user.module';
 import { TypegooseModule } from 'nestjs-typegoose';
+import { TaskController } from './task/task.controller';
+import { TaskModule } from './task/task.module';
+import { DiscussionModule } from './discussion/discussion.module';
+import { SprintController } from './sprint/sprint.controller';
+import { SprintModule } from './sprint/sprint.module';
+import { UserCollectionModule } from './user-collection/user-collection.module';
+import { GroupCollectionModule } from './group-collection/group-collection.module';
 
 @Module({
   imports: [
@@ -18,8 +25,13 @@ import { TypegooseModule } from 'nestjs-typegoose';
     }),
     SharedModule,
     UserModule,
+    TaskModule,
+    DiscussionModule,
+    SprintModule,
+    UserCollectionModule,
+    GroupCollectionModule,
   ],
-  controllers: [AppController],
+  controllers: [AppController, SprintController],
   providers: [AppService],
 })
 export class AppModule {
