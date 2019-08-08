@@ -4,7 +4,6 @@ import {AppService} from './app.service';
 import {SharedModule} from './shared/shared.module';
 import {UserModule} from './user/user.module';
 import {TypegooseModule} from 'nestjs-typegoose';
-import { GroupCollectionModule } from './group-collection/group-collection.module';
 import { ProjectModule } from './project/project.module';
 
 @Module({
@@ -21,7 +20,6 @@ import { ProjectModule } from './project/project.module';
         }),
         SharedModule,
         UserModule,
-        GroupCollectionModule,
         ProjectModule,
     ],
     controllers: [AppController],

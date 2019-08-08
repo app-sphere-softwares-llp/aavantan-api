@@ -1,6 +1,5 @@
 import {BaseModel} from '../../models/baseModel';
-import {arrayProp, prop} from 'typegoose';
-import {User} from '../../user/models/user.model';
+import {InstanceType, ModelType, prop} from 'typegoose';
 
 export class ProjectModel extends BaseModel<ProjectModel> {
     @prop()
@@ -9,18 +8,24 @@ export class ProjectModel extends BaseModel<ProjectModel> {
     @prop()
     projectAccess: string;
 
-    @prop()
-    projectVersion: string;
-
-    @arrayProp({
-        default: [],
-        itemsRefPath: User,
+    @prop({
+        default: 'v_1.0'
     })
-    members: User[];
+    projectVersion: string;
 
     @prop()
     createdBy: string;
 
     @prop()
     updatedBy: string;
+
+    members: Array<{ userId?: string, projectId?: string, email?: string }>;
+
+    static get model(): ModelType<ProjectModel> {
+        return new ProjectModel().getModelForClass(ProjectModel, {});
+    }
+
+    static createModel(): InstanceType<ProjectModel> {
+        return new this.model();
+    }
 }
