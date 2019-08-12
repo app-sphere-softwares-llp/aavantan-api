@@ -21,13 +21,13 @@ export class ProjectService extends BaseService<ProjectModel> {
         const projectDetails = await createdProject.save();
 
         if (projectDetails) {
-            const members: any[] = [];
-            projectDetails.members.forEach(pjm => {
-                members.push({
-                    userId: pjm.userId,
-                    email: pjm.email,
-                    projectId: projectDetails.id
-                });
+            const members: ProjectMembersModel[] = [];
+            project.members.forEach(pjm => {
+                const mem = ProjectMembersModel.createModel();
+                mem.email = pjm.email;
+                mem.userId = pjm.userId;
+                mem.projectId = projectDetails.id;
+                members.push(mem);
             });
             await this.projectMemberModel.create(members);
             return projectDetails;
